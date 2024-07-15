@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
+    font-family: monospace; /* Ensures monospaced font */
+    color: #000;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack the ASCII art and animated text vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+pre.ascii-art {
+    font-size: 12px; /* Adjust font size to match the correct version */
+    line-height: 1.2; /* Adjust line height to ensure proper spacing */
+    white-space: pre; /* Preserve whitespace */
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: monospace; /* Ensure monospaced font */
+}
