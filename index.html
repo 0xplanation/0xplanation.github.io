@@ -1,85 +1,246 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/main.bundle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Satere Labs</title>
-    
+
+    <!-- Your bundle + font -->
+    <link rel="stylesheet" href="/assets/main.bundle.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Light Futuristic Theme -->
+    <style>
+      :root{
+        --bg: #ffffff;
+        --text: #1a1a1a;
+        --muted: #565b62;
+        --line: rgba(0,0,0,0.08);
+        --card: #ffffff;
+        --shadow: 0 6px 24px rgba(0,0,0,0.06);
+        --accent: #0a84ff; /* neon-leaning blue */
+        --accent-2: #6a5cff; /* secondary violet for subtle gradients */
+        --radius: 16px;
+        --rhythm-sm: .5rem;
+        --rhythm: 1rem;
+        --rhythm-lg: 2rem;
+        --maxw: 64rem; /* ~1024px */
+      }
+
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.65;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Layout helpers */
+      .container {
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 3vw, 2rem);
+      }
+      .stack { display: grid; gap: var(--rhythm); }
+      .stack-sm { gap: .75rem; }
+      .stack-md { gap: 1.25rem; }
+      .stack-lg { gap: var(--rhythm-lg); }
+      .stack-xl { gap: clamp(1.5rem, 3vw, 2.5rem); }
+
+      /* Header / Nav */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: color-mix(in srgb, var(--bg) 92%, white);
+        backdrop-filter: saturate(140%) blur(6px);
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+        color: var(--text);
+        position: relative;
+        text-decoration: none;
+      }
+      .brand::after {
+        content: "";
+        position: absolute;
+        left: 0; bottom: -6px;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        border-radius: 2px;
+      }
+      nav ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        margin: 0; padding: 0;
+      }
+      nav a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: .01em;
+      }
+      nav a:hover {
+        color: var(--accent);
+      }
+
+      /* Headings */
+      h1, h2, h3 {
+        margin: 0;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      h1 {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: clamp(1.25rem, 3.2vw, 1.75rem);
+      }
+      h2 {
+        font-weight: 700;
+        font-size: clamp(1rem, 2.2vw, 1.125rem);
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      p {
+        margin: 0;
+        color: #33383f;
+        max-width: 70ch;
+      }
+
+      /* Cards (optional wrapper look for sections) */
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(1rem, 2.5vw, 1.75rem);
+      }
+
+      /* Accent link underline */
+      .u-underline {
+        text-decoration: none;
+        color: var(--accent);
+        border-bottom: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+        padding-bottom: 2px;
+      }
+      .u-underline:hover {
+        border-bottom-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      /* Minor utilities */
+      .mt-4 { margin-top: 1rem; }
+      .mt-6 { margin-top: 1.5rem; }
+      .mt-12 { margin-top: 3rem; }
+      .text-center { text-align: center; }
+      .text-sm { font-size: .9rem; }
+      .muted { color: var(--muted); }
+      .accent { color: var(--accent); }
+      .wrap { padding-block: clamp(1rem, 3vw, 1.5rem); }
+      .wrap-lg { padding-block: clamp(2rem, 5vw, 3rem); }
+
+      /* Subtle left rail accent for sections labeled h1 */
+      section > .stack-sm > h1::before {
+        content: "";
+        display: inline-block;
+        width: .5rem;
+        height: .5rem;
+        margin-right: .5rem;
+        border-radius: 999px;
+        background: radial-gradient(circle at 60% 40%, var(--accent), var(--accent-2));
+        vertical-align: middle;
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+      }
+    </style>
   </head>
+
   <body class="flex flex-col min-h-screen">
-    <header class="text-white">
-  <nav class="max-w-4xl mx-auto p-8 flex justify-between">
-    <a class="text-4xl border-b-2 font-bold border-white border-b-4 border-yellow-400" href="/">
-      Satere Labs
-    </a>
-    <ul class="flex">
-      
-    </nav>
-    </ul>
-</header>
+    <header>
+      <div class="container wrap">
+        <nav class="flex justify-between items-center" style="display:flex;align-items:center;justify-content:space-between;">
+          <a class="brand" href="/">Satere Labs</a>
+          <ul>
+            <!-- Add future nav items here if needed -->
+          </ul>
+        </nav>
+      </div>
+    </header>
 
     <main class="flex-grow">
-      
-  <div class="max-w-4xl mx-auto p-8 pb-12">
-    <section class="stack stack-xl">
-      <div class="stack stack-sm">
-        <h1 class="leading-tight">about</h1>
-        <p>
-          Satere Labs is a software technology firm that builds cutting edge computer infrastructure.
-        </p>
-      </div>
-      <div class="stack stack-sm">
-        <h1 class="leading-tight">technology</h1>
-        <p>
-          We leverage our expertise in high tech computer systems
-         and state-of-the-art research to build ultra scalable systems.
-          
-        </p>
-      </div>
-      <div class="stack stack-sm">
-        <h1 class="leading-tight">product</h1>
-        <p class="mt-4">
-          We built Satori, one of the most sophisticated verifiable compute platforms 
-          and are onboarding select partners.
-        </p>
-        <p class="mt-4">
-          If you are interested in using Satori, write to us through our mutual points of contact.
-        </p>
-      </div>
-      <div class="stack stack-sm">
-        <h1 class="leading-tight">join us</h1>
-        <p>
-          Here at Satere Labs, we are constantly attacking interesting and challenging problems.
-          We love to work with independent thinkers with bold ideas. Check out our openings below.
-        </p>
+      <div class="container wrap-lg">
+        <section class="stack stack-xl">
+          <div class="stack stack-sm card">
+            <h1 class="leading-tight">about</h1>
+            <p>Satere Labs is a software technology firm that builds cutting edge computer infrastructure.</p>
+          </div>
 
-        <div>
-          <h2 class="leading-tight text-xl mt-6 text-gray-100">software engineering</h2>
-          <h2 class="text-sm text-gray-200">your role</h2>
-   
-        </div>
+          <div class="stack stack-sm card">
+            <h1 class="leading-tight">technology</h1>
+            <p>We leverage our expertise in high tech computer systems and state-of-the-art research to build ultra scalable systems.</p>
+          </div>
 
-        <p class="mt-4">
-          If you have a passion for cutting edge tech, and feel that Satere Labs can help you realize your full potential, please email your resume to
-          <a href="satere.xyz" class="border-white border-b-2 hover:border-yellow-400">NO AVAILABLE OPENINGS</a>
-        </p>
+          <div class="stack stack-sm card">
+            <h1 class="leading-tight">product</h1>
+            <p class="mt-4">We built Satori, one of the most sophisticated verifiable compute platforms and are onboarding select partners.</p>
+            <p class="mt-4">If you are interested in using Satori, write to us through our mutual points of contact.</p>
+          </div>
 
+          <div class="stack stack-sm card">
+            <h1 class="leading-tight">join us</h1>
+            <p>
+              Here at Satere Labs, we are constantly attacking interesting and challenging problems.
+              We love to work with independent thinkers with bold ideas. Check out our openings below.
+            </p>
+
+            <div class="stack stack-sm">
+              <h2 class="leading-tight">software engineering</h2>
+              <h2 class="text-sm muted">your role</h2>
+            </div>
+
+            <p class="mt-4">
+              If you have a passion for cutting edge tech, and feel that Satere Labs can help you realize your full potential, please email your resume to
+              <a href="https://satere.xyz" class="u-underline">NO AVAILABLE OPENINGS</a>
+            </p>
+          </div>
+
+          <p class="mt-12 text-center text-sm muted">
+            © <span data-year></span> Satere Labs. All Rights Reserved.
+          </p>
+        </section>
       </div>
-      <p class="mt-12 text-center text-sm text-gray-400">
-        © <span data-year></span> Satere Labs. All Rights Reserved.
-      </p>
-    </section>
-  </div>
-
     </main>
-    <footer class="bg-gray-900 text-white ">
-  
-</footer>
+
+    <footer>
+      <div class="container wrap">
+        <!-- reserved for future links -->
+      </div>
+    </footer>
 
     <script src="/assets/main.bundle.js"></script>
+    <script>
+      // Set © year
+      document.querySelectorAll('[data-year]').forEach(n => n.textContent = new Date().getFullYear());
+    </script>
   </body>
 </html>
