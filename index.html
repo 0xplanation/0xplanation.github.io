@@ -6,373 +6,269 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Satere Labs</title>
 
-    <!-- Your bundle + font -->
+    <!-- Core CSS bundle -->
     <link rel="stylesheet" href="/assets/main.bundle.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
-<style>
-  .hero {
-  background: linear-gradient(135deg, #f9faff, #ffffff);
-  border-bottom: 1px solid var(--line);
-  padding-block: clamp(3rem, 8vw, 6rem);
-}
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
 
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: clamp(1.25rem, 3vw, 2rem);
-}
-
-.hero-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: var(--text);
-}
-
-.hero-tagline {
-  font-size: 1.125rem;
-  color: var(--muted);
-  max-width: 50ch;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.85em 1.4em;
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  font-weight: 700;
-  text-decoration: none;
-  transition: background .2s ease, color .2s ease, border-color .2s ease;
-}
-.btn:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-.hero-art {
-  position: relative;
-  aspect-ratio: 6 / 4;
-}
-.hero-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-@media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-art { order: -1; }
-}
-
-    </style>
-    <!-- Light Futuristic Theme -->
+    <!-- Theme Styles -->
     <style>
-      :root{
+      :root {
         --bg: #ffffff;
         --text: #1a1a1a;
         --muted: #565b62;
         --line: rgba(0,0,0,0.08);
         --card: #ffffff;
         --shadow: 0 6px 24px rgba(0,0,0,0.06);
-        --accent: #0a84ff; /* neon-leaning blue */
-        --accent-2: #6a5cff; /* secondary violet for subtle gradients */
+        --accent: #0a84ff;
+        --accent-2: #6a5cff;
         --radius: 16px;
-        --rhythm-sm: .5rem;
-        --rhythm: 1rem;
-        --rhythm-lg: 2rem;
-        --maxw: 64rem; /* ~1024px */
-      }
-
-      html, body {
-        height: 100%;
+        --maxw: 64rem;
       }
 
       body {
-        font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-family: 'Inter', sans-serif;
         background: var(--bg);
         color: var(--text);
         margin: 0;
         line-height: 1.65;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Layout helpers */
-      .container {
-        max-width: var(--maxw);
-        margin-inline: auto;
-        padding-inline: clamp(1rem, 3vw, 2rem);
-      }
-      .stack { display: grid; gap: var(--rhythm); }
-      .stack-sm { gap: .75rem; }
-      .stack-md { gap: 1.25rem; }
-      .stack-lg { gap: var(--rhythm-lg); }
-      .stack-xl { gap: clamp(1.5rem, 3vw, 2.5rem); }
-
-      /* Header / Nav */
       header {
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
         position: sticky;
         top: 0;
         z-index: 50;
-        background: color-mix(in srgb, var(--bg) 92%, white);
-        backdrop-filter: saturate(140%) blur(6px);
-        border-bottom: 1px solid var(--line);
       }
       .brand {
-        font-weight: 900;
-        letter-spacing: -0.02em;
-        text-transform: uppercase;
-        font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        text-decoration: none;
         color: var(--text);
         position: relative;
-        text-decoration: none;
       }
       .brand::after {
         content: "";
         position: absolute;
-        left: 0; bottom: -6px;
+        bottom: -6px;
+        left: 0;
         width: 100%;
         height: 2px;
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         border-radius: 2px;
       }
-      nav ul {
-        display: flex;
-        gap: 1rem;
-        list-style: none;
-        margin: 0; padding: 0;
-      }
-      nav a {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 700;
-        letter-spacing: .01em;
-      }
-      nav a:hover {
-        color: var(--accent);
-      }
 
-      /* Headings */
+      .container { max-width: var(--maxw); margin-inline: auto; padding: 0 1.5rem; }
+      .stack { display: grid; gap: 1.5rem; }
+      .stack-lg { gap: 2.5rem; }
+      .stack-sm { gap: 1rem; }
+
       h1, h2, h3 {
+        font-family: 'Space Grotesk', sans-serif;
         margin: 0;
-        letter-spacing: -0.02em;
-        color: var(--text);
       }
-      h1 {
-        font-weight: 900;
-        text-transform: uppercase;
-        font-size: clamp(1.25rem, 3.2vw, 1.75rem);
-      }
-      h2 {
-        font-weight: 700;
-        font-size: clamp(1rem, 2.2vw, 1.125rem);
-        color: var(--muted);
-        text-transform: uppercase;
-      }
+      h1 { font-weight: 700; font-size: clamp(1.5rem, 3vw, 2rem); }
+      h2 { font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.5rem); color: var(--text); }
+      h3 { font-weight: 600; font-size: 1rem; color: var(--muted); }
 
-      p {
-        margin: 0;
-        color: #33383f;
-        max-width: 70ch;
-      }
+      p { margin: 0; color: #33383f; }
 
-      /* Cards (optional wrapper look for sections) */
       .card {
         background: var(--card);
         border: 1px solid var(--line);
         border-radius: var(--radius);
         box-shadow: var(--shadow);
-        padding: clamp(1rem, 2.5vw, 1.75rem);
+        padding: 2rem;
       }
 
-      /* Accent link underline */
-      .u-underline {
-        text-decoration: none;
-        color: var(--accent);
-        border-bottom: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
-        padding-bottom: 2px;
+      /* Hero */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(3rem, 8vw, 6rem) 0;
+        border-bottom: 1px solid var(--line);
+        background: #ffffff;
       }
-      .u-underline:hover {
-        border-bottom-color: var(--accent);
-        color: var(--accent);
+      .hero-art {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
       }
-
-      /* Footer */
-      footer {
-        border-top: 1px solid var(--line);
+      .hero-svg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--text);
+      }
+      .hero-sub {
+        font-size: 1.25rem;
+        color: var(--muted);
+        max-width: 60ch;
+      }
+      .hero-note {
+        font-size: 0.95rem;
+        margin-top: 1rem;
         color: var(--muted);
       }
 
-      /* Minor utilities */
-      .mt-4 { margin-top: 1rem; }
-      .mt-6 { margin-top: 1.5rem; }
-      .mt-12 { margin-top: 3rem; }
-      .text-center { text-align: center; }
-      .text-sm { font-size: .9rem; }
-      .muted { color: var(--muted); }
-      .accent { color: var(--accent); }
-      .wrap { padding-block: clamp(1rem, 3vw, 1.5rem); }
-      .wrap-lg { padding-block: clamp(2rem, 5vw, 3rem); }
+      /* Metrics */
+      .metrics {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+      .metric {
+        flex: 1 1 200px;
+        text-align: center;
+      }
+      .metric h2 { font-size: 1.75rem; color: var(--accent); }
+      .metric p { color: var(--muted); }
 
-      /* Subtle left rail accent for sections labeled h1 */
-      section > .stack-sm > h1::before {
-        content: "";
-        display: inline-block;
-        width: .5rem;
-        height: .5rem;
-        margin-right: .5rem;
-        border-radius: 999px;
-        background: radial-gradient(circle at 60% 40%, var(--accent), var(--accent-2));
-        vertical-align: middle;
-        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 1.5rem 0;
+        color: var(--muted);
+        text-align: center;
       }
     </style>
   </head>
 
   <body class="flex flex-col min-h-screen">
     <header>
-      <div class="container wrap">
-        <nav class="flex justify-between items-center" style="display:flex;align-items:center;justify-content:space-between;">
-          <a class="brand" href="/">Satere Labs</a>
-          <ul>
-            <!-- Add future nav items here if needed -->
-          </ul>
-        </nav>
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;">
+        <a class="brand" href="/">Satere Labs</a>
       </div>
     </header>
 
     <main class="flex-grow">
-<div class="hero-art">
-  <svg class="hero-svg" viewBox="0 0 1200 700" role="img" aria-label="Abstract futuristic tech illustration" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <!-- Accents -->
-      <linearGradient id="acc" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0%" stop-color="#0a84ff"/>
-        <stop offset="100%" stop-color="#6a5cff"/>
-      </linearGradient>
+      <!-- Hero -->
+      <section class="hero">
+        <!-- Background art -->
+        <div class="hero-art">
+          <svg class="hero-svg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="acc" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#0a84ff"/>
+                <stop offset="100%" stop-color="#6a5cff"/>
+              </linearGradient>
+              <radialGradient id="bgGlow" cx="65%" cy="35%" r="80%">
+                <stop offset="0%" stop-color="#eef4ff"/>
+                <stop offset="60%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#ffffff"/>
+              </radialGradient>
+              <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(10,10,40,0.06)" stroke-width="1"/>
+              </pattern>
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <rect width="1200" height="700" fill="url(#bgGlow)"/>
+            <rect width="1200" height="700" fill="url(#grid)"/>
+            <g opacity="0.2" filter="url(#glow)">
+              <circle cx="980" cy="160" r="120" fill="url(#acc)"/>
+              <circle cx="280" cy="520" r="90" fill="url(#acc)"/>
+            </g>
+            <g fill="none" stroke="url(#acc)" stroke-width="2.5">
+              <path d="M 80 560 C 320 420, 520 420, 760 560" opacity="0.7"/>
+              <path d="M 120 480 C 340 360, 560 360, 920 520" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
 
-      <!-- Soft background vignette -->
-      <radialGradient id="bgGlow" cx="65%" cy="35%" r="80%">
-        <stop offset="0%" stop-color="#eef4ff"/>
-        <stop offset="60%" stop-color="#ffffff"/>
-        <stop offset="100%" stop-color="#ffffff"/>
-      </radialGradient>
-
-      <!-- Grid pattern -->
-      <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-        <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(10,10,40,0.08)" stroke-width="1"/>
-      </pattern>
-
-      <!-- Glow filter -->
-      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="6" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-
-    <!-- Background -->
-    <rect width="1200" height="700" fill="url(#bgGlow)"/>
-    <rect width="1200" height="700" fill="url(#grid)"/>
-
-    <!-- Accent orbs (soft, de-emphasized) -->
-    <g opacity="0.25" filter="url(#glow)">
-      <circle cx="980" cy="160" r="120" fill="url(#acc)"/>
-      <circle cx="280" cy="520" r="90" fill="url(#acc)"/>
-    </g>
-
-    <!-- Tech arcs -->
-    <g fill="none" stroke="url(#acc)" stroke-width="2.5">
-      <path d="M 80 560 C 320 420, 520 420, 760 560" opacity="0.7"/>
-      <path d="M 120 480 C 340 360, 560 360, 920 520" opacity="0.5"/>
-      <path d="M 60 620 C 300 500, 700 520, 1120 600" opacity="0.35"/>
-    </g>
-
-    <!-- Converging isometric lines -->
-    <g stroke="rgba(10,132,255,0.45)" stroke-width="1.25">
-      <path d="M 160 140 L 520 320 L 1060 120" fill="none"/>
-      <path d="M 160 200 L 520 360 L 1060 180" fill="none" opacity="0.75"/>
-      <path d="M 160 260 L 520 400 L 1060 240" fill="none" opacity="0.55"/>
-    </g>
-
-    <!-- Nodes -->
-    <g fill="#0a84ff">
-      <circle cx="520" cy="320" r="4"/>
-      <circle cx="520" cy="360" r="4" opacity="0.8"/>
-      <circle cx="520" cy="400" r="4" opacity="0.6"/>
-    </g>
-
-    <!-- Subtle highlight sweep -->
-    <path d="M 0 380 Q 300 340 600 360 T 1200 350"
-          fill="none" stroke="rgba(106,92,255,0.25)" stroke-width="14" />
-  </svg>
-</div>
-
-      
-      <div class="container wrap-lg">
-        <section class="stack stack-xl">
-          
-
-
-          
-          <div class="stack stack-sm card">
-            <h1 class="leading-tight">about</h1>
-            <p>Satere Labs is a software technology firm that builds cutting edge computer infrastructure.</p>
-          </div>
-
-          <div class="stack stack-sm card">
-            <h1 class="leading-tight">technology</h1>
-            <p>We leverage our expertise in high tech computer systems and state-of-the-art research to build ultra scalable systems.</p>
-          </div>
-
-          <div class="stack stack-sm card">
-            <h1 class="leading-tight">product</h1>
-            <p class="mt-4">We built Satori, one of the most sophisticated verifiable compute platforms and are onboarding select partners.</p>
-            <p class="mt-4">If you are interested in using Satori, write to us through our mutual points of contact.</p>
-          </div>
-
-          <div class="stack stack-sm card">
-            <h1 class="leading-tight">join us</h1>
-            <p>
-              Here at Satere Labs, we are constantly attacking interesting and challenging problems.
-              We love to work with independent thinkers with bold ideas. Check out our openings below.
+        <!-- Foreground content -->
+        <div class="container stack hero-content">
+          <div>
+            <h3>🧠 Hero Section: Verifiable Compute Without Compromise</h3>
+            <h1 class="hero-title">Massively parallel, verifiable compute cloud.</h1>
+            <p class="hero-sub">
+              Proof-native workloads, trustless execution, horizontally scalable infrastructure.
             </p>
+            <p class="hero-note">Satere built Satori</p>
+          </div>
+        </div>
+      </section>
 
-            <div class="stack stack-sm">
-              <h2 class="leading-tight">software engineering</h2>
-              <h2 class="text-sm muted">your role</h2>
+      <!-- Main Content Sections -->
+      <div class="container stack-lg" style="padding:3rem 0;">
+        <!-- Why Satori -->
+        <div class="card stack">
+          <h2>🚀 Why Satori</h2>
+          <p>Designed for the New Era of Compute</p>
+          <ul>
+            <li><strong>Verifiable by Default:</strong> All compute outputs are backed by zero-knowledge proofs. No trust required.</li>
+            <li><strong>Massively Parallel:</strong> Horizontally scalable across commodity machines—unlocks throughput without centralized bottlenecks.</li>
+            <li><strong>Built for Builders:</strong> API-first design, low integration overhead, real-time performance monitoring.</li>
+          </ul>
+        </div>
+
+        <!-- How It Works -->
+        <div class="card stack">
+          <h2>🔍 How It Works</h2>
+          <p>From Input to Verifiable Output</p>
+          <ol>
+            <li>Submit Task via REST or SDK</li>
+            <li>Distributed Execution across verified compute nodes</li>
+            <li>Proof aggregation using proprietary ZK stack</li>
+            <li>Trustless verification in-app, on-chain, or via API</li>
+          </ol>
+        </div>
+
+        <!-- Use Cases -->
+        <div class="card stack">
+          <h2>💡 Use Cases</h2>
+          <ul>
+            <li>Zero-Knowledge Proof Generation</li>
+            <li>AI Inference Auditing</li>
+            <li>Privacy-Preserving Analytics</li>
+            <li>Compute Trust Layers in the modular stack</li>
+          </ul>
+        </div>
+
+        <!-- Live Metrics -->
+        <div class="card stack">
+          <h2>📈 Live Metrics (optional)</h2>
+          <div class="metrics">
+            <div class="metric">
+              <h2>99.99%</h2>
+              <p>Verifiability Rate</p>
             </div>
-
-            <p class="mt-4">
-              If you have a passion for cutting edge tech, and feel that Satere Labs can help you realize your full potential, please email your resume to
-              <a href="https://satere.xyz" class="u-underline">NO AVAILABLE OPENINGS</a>
-            </p>
+            <div class="metric">
+              <h2>12,000+</h2>
+              <p>Tasks Completed</p>
+            </div>
+            <div class="metric">
+              <h2>20+</h2>
+              <p>zk Circuit Types Supported</p>
+            </div>
           </div>
-
-          <p class="mt-12 text-center text-sm muted">
-            © <span data-year></span> Satere Labs. All Rights Reserved.
-          </p>
-        </section>
+        </div>
       </div>
     </main>
 
     <footer>
-      <div class="container wrap">
-        <!-- reserved for future links -->
-      </div>
+      © <span data-year></span> Satere Labs. All Rights Reserved.
     </footer>
 
-    <script src="/assets/main.bundle.js"></script>
     <script>
-      // Set © year
       document.querySelectorAll('[data-year]').forEach(n => n.textContent = new Date().getFullYear());
     </script>
   </body>
