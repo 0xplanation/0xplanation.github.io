@@ -10,6 +10,66 @@
     <link rel="stylesheet" href="/assets/main.bundle.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
+<style>
+  .hero {
+  background: linear-gradient(135deg, #f9faff, #ffffff);
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.hero-tagline {
+  font-size: 1.125rem;
+  color: var(--muted);
+  max-width: 50ch;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85em 1.4em;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.hero-art {
+  position: relative;
+  aspect-ratio: 6 / 4;
+}
+.hero-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+}
+
+    </style>
     <!-- Light Futuristic Theme -->
     <style>
       :root{
@@ -188,8 +248,81 @@
     </header>
 
     <main class="flex-grow">
+<div class="hero-art">
+  <svg class="hero-svg" viewBox="0 0 1200 700" role="img" aria-label="Abstract futuristic tech illustration" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Accents -->
+      <linearGradient id="acc" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0%" stop-color="#0a84ff"/>
+        <stop offset="100%" stop-color="#6a5cff"/>
+      </linearGradient>
+
+      <!-- Soft background vignette -->
+      <radialGradient id="bgGlow" cx="65%" cy="35%" r="80%">
+        <stop offset="0%" stop-color="#eef4ff"/>
+        <stop offset="60%" stop-color="#ffffff"/>
+        <stop offset="100%" stop-color="#ffffff"/>
+      </radialGradient>
+
+      <!-- Grid pattern -->
+      <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(10,10,40,0.08)" stroke-width="1"/>
+      </pattern>
+
+      <!-- Glow filter -->
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect width="1200" height="700" fill="url(#bgGlow)"/>
+    <rect width="1200" height="700" fill="url(#grid)"/>
+
+    <!-- Accent orbs (soft, de-emphasized) -->
+    <g opacity="0.25" filter="url(#glow)">
+      <circle cx="980" cy="160" r="120" fill="url(#acc)"/>
+      <circle cx="280" cy="520" r="90" fill="url(#acc)"/>
+    </g>
+
+    <!-- Tech arcs -->
+    <g fill="none" stroke="url(#acc)" stroke-width="2.5">
+      <path d="M 80 560 C 320 420, 520 420, 760 560" opacity="0.7"/>
+      <path d="M 120 480 C 340 360, 560 360, 920 520" opacity="0.5"/>
+      <path d="M 60 620 C 300 500, 700 520, 1120 600" opacity="0.35"/>
+    </g>
+
+    <!-- Converging isometric lines -->
+    <g stroke="rgba(10,132,255,0.45)" stroke-width="1.25">
+      <path d="M 160 140 L 520 320 L 1060 120" fill="none"/>
+      <path d="M 160 200 L 520 360 L 1060 180" fill="none" opacity="0.75"/>
+      <path d="M 160 260 L 520 400 L 1060 240" fill="none" opacity="0.55"/>
+    </g>
+
+    <!-- Nodes -->
+    <g fill="#0a84ff">
+      <circle cx="520" cy="320" r="4"/>
+      <circle cx="520" cy="360" r="4" opacity="0.8"/>
+      <circle cx="520" cy="400" r="4" opacity="0.6"/>
+    </g>
+
+    <!-- Subtle highlight sweep -->
+    <path d="M 0 380 Q 300 340 600 360 T 1200 350"
+          fill="none" stroke="rgba(106,92,255,0.25)" stroke-width="14" />
+  </svg>
+</div>
+
+      
       <div class="container wrap-lg">
         <section class="stack stack-xl">
+          
+
+
+          
           <div class="stack stack-sm card">
             <h1 class="leading-tight">about</h1>
             <p>Satere Labs is a software technology firm that builds cutting edge computer infrastructure.</p>
