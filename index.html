@@ -3,138 +3,272 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Satere</title>
+  <title>Satere — Strategy & Growth for Tech (with Ridiculous AI)</title>
+  <meta name="description" content="A tongue‑in‑cheek, over‑the‑top AI‑themed landing page for a strategy consultant focused on growth marketing for tech." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0a0a0a; --fg:#f5f5f5; --muted:#9aa0a6; --accent:#c7f284;
+      --bg:#0a0b0f; --card:#11131a; --ink:#e5e7eb; --muted:#9aa0aa; --brand:#7c88ff; --acid:#00ffd1; --hot:#ff79c6; --ok:#7ef29a; --ring:rgba(124,136,255,.35);
+      --radius:18px;
     }
-    html,body{height:100%; background:var(--bg); color:var(--fg); margin:0;}
-    body{font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; letter-spacing:0.01em;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:radial-gradient(1200px 600px at 10% -20%,rgba(124,136,255,.12),transparent),
+                     radial-gradient(900px 500px at 120% 10%,rgba(0,255,209,.08),transparent),
+                     radial-gradient(700px 400px at -10% 120%,rgba(255,121,198,.08),transparent),
+                     var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; line-height:1.5}
+    a{color:var(--ink); text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px}
+    .nav{display:flex; align-items:center; justify-content:space-between}
+    .logo{display:flex; gap:12px; align-items:center}
+    .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--hot));box-shadow:0 8px 32px rgba(124,136,255,.35)}
+    .logo h1{font-size:18px;margin:0;letter-spacing:.4px}
+    .pill{display:inline-flex; gap:10px; align-items:center; border:1px solid #272a33; background:rgba(17,19,26,.6); padding:8px 12px; border-radius:999px; color:var(--muted)}
+    .hero{padding:72px 0 56px; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:center}
+    .h-eyebrow{display:inline-flex; align-items:center; gap:8px; color:var(--muted); font-weight:600; letter-spacing:.12em; text-transform:uppercase; font-size:12px}
+    .h-title{font-size:64px; line-height:1.02; margin:12px 0 14px; font-weight:900; letter-spacing:-.02em}
+    .h-sub{color:#cbd1dc; font-size:18px; max-width:56ch}
+    .cta-row{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .btn{border:none; cursor:pointer; padding:14px 18px; border-radius:14px; font-weight:700; letter-spacing:.2px}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--acid)); color:#0a0b0f; box-shadow:0 10px 40px var(--ring)}
+    .btn.ghost{background:#131722; color:var(--ink); border:1px solid #262a35}
+    .mono{font-family:"Space Mono",monospace}
+    .terminal{background:linear-gradient(180deg,#0b0d12,#0b0d12 60%,#0f1320); border:1px solid #1b2030; border-radius:var(--radius); padding:18px; position:relative; overflow:hidden}
+    .terminal:before{content:"◻  ◻  ◻"; position:absolute; top:8px; left:12px; color:#3a4052; font-weight:700; letter-spacing:3px}
+    .scan{position:absolute; inset:0; background:repeating-linear-gradient(180deg, rgba(124,136,255,.06) 0 2px, transparent 2px 5px); mix-blend-mode:screen; animation:scan 6s linear infinite}
+    @keyframes scan{from{transform:translateY(-100%)} to{transform:translateY(100%)} }
+    pre{margin:0; white-space:pre-wrap; color:#d1e4ff}
+    .marquee{margin-top:26px; overflow:hidden; border:1px dashed #2a2f41; border-radius:12px; color:#aab2c3}
+    .marquee-track{display:flex; gap:28px; padding:10px 12px; animation:m 22s linear infinite}
+    .badge{border:1px solid #2c3347; padding:6px 10px; border-radius:999px; background:#0d1018}
+    @keyframes m{from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-    .stage{position:fixed; inset:0; display:grid; place-items:center; text-align:center;}
-    .mark{font-size: clamp(28px, 6vw, 80px); font-weight:600; letter-spacing:0.14em; text-transform:uppercase;}
-    .mark .invert{transform: scaleX(-1); display:inline-block;}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px}
+    .card{background:rgba(15,18,27,.6); border:1px solid #212635; border-radius:var(--radius); padding:18px; transition:transform .2s ease, box-shadow .2s ease}
+    .card:hover{transform:translateY(-2px); box-shadow:0 16px 40px rgba(0,0,0,.25)}
+    .card h3{margin:6px 0 8px}
+    .tiny{font-size:12px; color:var(--muted)}
 
-    .points{position:fixed; bottom:60px; left:50%; transform:translateX(-50%); display:flex; gap:28px; font-size:13px; letter-spacing:.12em; color:var(--muted); opacity:.65;}
+    .split{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:start; margin-top:48px}
+    .list{display:grid; gap:12px}
+    .li{display:flex; gap:12px}
+    .li i{width:26px; height:26px; display:grid; place-items:center; border-radius:8px; background:rgba(124,136,255,.1); border:1px solid rgba(124,136,255,.25)}
 
-    .dot{position:fixed; right:22px; bottom:18px; width:12px; height:12px; border-radius:50%; background:var(--fg); opacity:.6; transition:opacity .2s ease; box-shadow:0 0 8px rgba(255,255,255,.3);}
-    .dot:hover{opacity:1}
+    .pricing{margin-top:54px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .price{padding:22px; border-radius:20px; border:1px solid #262c3e; background:linear-gradient(180deg,#0d111a,#0c0f17)}
+    .price h4{margin:4px 0 6px}
+    .num{font-size:36px; font-weight:900}
+    .price ul{margin:14px 0 0; padding:0 0 0 16px; color:#cbd1dc}
 
-    .caret{width:8px; height:18px; background:var(--fg); opacity:.0; display:inline-block; margin-left:8px; border-radius:1px; animation:blink 1.8s steps(1,end) infinite;}
-    @keyframes blink{50%{opacity:.35}}
+    .proof{margin-top:54px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .proof .q{border:1px solid #252a3a; border-radius:16px; padding:18px; background:rgba(12,16,24,.6)}
 
-    .artifact{position:fixed; left:24px; bottom:22px; font-size:12px; color:var(--muted); letter-spacing:.2em; opacity:.0; transition:opacity .5s ease;}
-    .artifact.show{opacity:.9}
+    .faq{margin-top:56px; display:grid; gap:12px}
+    details{border:1px solid #242a3c; border-radius:14px; padding:14px 16px; background:rgba(14,17,26,.6)}
+    summary{cursor:pointer; font-weight:600}
 
-    .chartWrap{position:fixed; inset:auto 0 14vh 0; height:38vh; pointer-events:none; opacity:0; transition:opacity .6s ease;}
-    .chartWrap.show{opacity:.7}
-    svg{width:100%; height:100%}
-    path#line{fill:none; stroke:var(--fg); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; filter: drop-shadow(0 0 6px rgba(255,255,255,.05));}
-    path#glow{fill:none; stroke:var(--accent); stroke-width:1; opacity:.25}
+    .footer{margin:64px 0 20px; display:flex; justify-content:space-between; align-items:center; color:var(--muted)}
+    .footer a{color:var(--muted)}
 
-    .panel{position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.7); backdrop-filter: blur(6px); opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s ease;}
-    .panel.show{opacity:1; visibility:visible}
-    .card{width:min(560px, 90vw); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px; background:rgba(15,15,15,.9); box-shadow:0 10px 40px rgba(0,0,0,.6)}
-    .card h2{margin:0 0 10px 0; font-weight:600; font-size:14px; color:var(--muted); letter-spacing:.18em; text-transform:uppercase}
-    .card textarea{width:100%; min-height:140px; padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#0b0b0b; color:var(--fg); outline:none; resize:vertical; font-size:14px; line-height:1.5}
-    .row{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px}
-    .ghost{font-size:12px; color:var(--muted)}
-    .send{margin-left:auto; padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--fg); cursor:pointer}
-    .send:active{transform:translateY(1px)}
-
-    .hint{position:fixed; top:18px; left:50%; transform:translateX(-50%); color:var(--muted); font-size:12px; letter-spacing:.15em; opacity:.5; animation:pulse 3s infinite;}
-    @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-
-    @media (prefers-reduced-motion: reduce){
-      .chartWrap, .artifact, .panel, .dot, .hint, .caret{transition:none; animation:none}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr; padding:54px 0 24px}
+      .grid{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .pricing,.proof{grid-template-columns:1fr}
+      .h-title{font-size:42px}
     }
   </style>
 </head>
 <body>
-  <div class="stage" aria-hidden="false" aria-label="Satere">
-    <div class="mark" id="mark" title="Satere">
-      SATE<span class="invert">R</span>E<span class="caret" aria-hidden="true"></span>
-    </div>
-  </div>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="logo"><div class="logo-mark" aria-hidden></div><h1 class="mono">SATERE</h1></div>
+      <div class="pill mono">v10.2 • AGI‑Infused* <span style="opacity:.6">(*vibes only)</span></div>
+    </nav>
 
-  <div class="points">
-    <div>market research</div>
-    <div>growth</div>
-    <div>memes</div>
-  </div>
-
-  <div class="chartWrap" id="chartWrap" aria-hidden="true">
-    <svg viewBox="0 0 1000 400" preserveAspectRatio="none" role="img" aria-label="Unlabeled time series">
-      <path id="line" d="M20,360 C80,350 120,340 160,320 C220,290 260,260 320,250 C390,240 420,260 470,240 C520,220 560,170 610,190 C660,210 700,200 760,140 C820,80 860,70 980,40"/>
-      <path id="glow" d="M20,360 C80,350 120,340 160,320 C220,290 260,260 320,250 C390,240 420,260 470,240 C520,220 560,170 610,190 C660,210 700,200 760,140 C820,80 860,70 980,40"/>
-    </svg>
-  </div>
-
-  <div class="artifact" id="artifact" aria-hidden="true"></div>
-
-  <button class="dot" id="dot" aria-label="introduce"></button>
-  <div class="hint" aria-hidden="true">scroll ↓ or click •</div>
-
-  <div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="introTitle">
-    <div class="card">
-      <h2 id="introTitle">introduce</h2>
-      <textarea id="introText" placeholder="Who you are. Why now."></textarea>
-      <div class="row">
-        <div class="ghost">Love.</div>
-        <button class="send" id="send">send</button>
+    <header class="hero">
+      <div>
+        <div class="h-eyebrow">Strategy • Growth • Tech</div>
+        <h2 class="h-title">Over‑the‑top AI growth,<br> minus the cringe.</h2>
+        <p class="h-sub">We build unfair, compounding acquisition loops for technical products. No hustle theater. No mystery metrics. Just systems that ship and graphs that go up.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#fit">Run the Fit Test →</a>
+          <a class="btn ghost" href="#signal">See the Signals</a>
+        </div>
+        <div class="marquee" aria-hidden>
+          <div class="marquee-track mono">
+            <span class="badge">market research</span>
+            <span class="badge">growth</span>
+            <span class="badge">memes</span>
+            <span class="badge">positioning</span>
+            <span class="badge">activation</span>
+            <span class="badge">conversion</span>
+            <span class="badge">retention</span>
+            <span class="badge">PLG</span>
+            <span class="badge">dev‑rel</span>
+            <span class="badge">B2B2C loops</span>
+            <span class="badge">—repeat—</span>
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="terminal mono" role="img" aria-label="AI console spewing improbable growth prophecies">
+        <div class="scan"></div>
+        <pre id="console">$ satere run growth --mode="ridiculous-ai"\n▶ ingesting market graph...\n▶ detecting memetic vectors...\n▶ compiling GTM bytecode...\n✅ loop-1: partner\n✅ loop-2: community\n✅ loop-3: content\n→ status: graphs escalating (tasteful)</pre>
+      </div>
+    </header>
+
+    <section id="signal" class="grid">
+      <article class="card">
+        <div class="tiny mono">01</div>
+        <h3>Positioning that provokes</h3>
+        <p>Say less, mean more. We narrow your story until it slices through noise and recruits the right enemies.</p>
+      </article>
+      <article class="card">
+        <div class="tiny mono">02</div>
+        <h3>Acquisition loops, not hacks</h3>
+        <p>Partner, community, content, and product—stitched into repeatable cycles that compound without paid burn.</p>
+      </article>
+      <article class="card">
+        <div class="tiny mono">03</div>
+        <h3>Memes with a spine</h3>
+        <p>Yes, memes—grounded in actual research. Narrative heat that engineers and CFOs both respect.</p>
+      </article>
+    </section>
+
+    <section class="split" id="fit">
+      <div class="list">
+        <h3>Who we’re great for</h3>
+        <div class="li"><i>🚀</i><div><strong>Technical teams</strong> with a clear wedge, not a vague platform wish.</div></div>
+        <div class="li"><i>🧪</i><div><strong>Pre‑PMF to Series B</strong> where velocity matters more than headcount.</div></div>
+        <div class="li"><i>🧩</i><div><strong>APIs, infra, and AI tooling</strong> that win on truth, not theatrics.</div></div>
+        <div class="li"><i>🧭</i><div><strong>Founders</strong> who prefer experiments over opinions.</div></div>
+      </div>
+      <div class="list">
+        <h3>Engagement model</h3>
+        <div class="li"><i>📊</i><div><strong>Market Research</strong> → demand maps, ICP cuts, pricing/packaging tests.</div></div>
+        <div class="li"><i>📈</i><div><strong>Growth</strong> → loop design, activation lift, content engines, partner plays.</div></div>
+        <div class="li"><i>🎭</i><div><strong>Memes</strong> → narrative scaffolds, artifacts, launch theatrics that don’t age poorly.</div></div>
+      </div>
+    </section>
+
+    <section class="pricing" aria-label="Pricing">
+      <div class="price">
+        <div class="tiny mono">S</div>
+        <h4>Diagnostics Sprint</h4>
+        <div class="num mono">$9.5k</div>
+        <ul>
+          <li>2 weeks, async + 2 working sessions</li>
+          <li>ICP & messaging teardown</li>
+          <li>Quick‑n‑dirty loop plan</li>
+        </ul>
+        <div class="cta-row"><a href="#contact" class="btn ghost">Start</a></div>
+      </div>
+      <div class="price" style="outline:2px solid rgba(124,136,255,.3)">
+        <div class="tiny mono">M</div>
+        <h4>Loop Builder</h4>
+        <div class="num mono">$18k / mo</div>
+        <ul>
+          <li>Retainer, 3‑month min</li>
+          <li>Design + ship 2–3 loops</li>
+          <li>Editorial + partner engine</li>
+        </ul>
+        <div class="cta-row"><a href="#contact" class="btn primary">Apply</a></div>
+      </div>
+      <div class="price">
+        <div class="tiny mono">L</div>
+        <h4>Embedded</h4>
+        <div class="num mono">$TBD</div>
+        <ul>
+          <li>1–2 days / week</li>
+          <li>Hands‑on GTM leadership</li>
+          <li>Hiring & enablement</li>
+        </ul>
+        <div class="cta-row"><a href="#contact" class="btn ghost">Request</a></div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="Proof">
+      <div class="q">
+        <div class="tiny mono">Case</div>
+        <strong>Infra SaaS → PMF</strong>
+        <p>Reframed from “platform” to a sharp wedge; shipped partner+content loop; signups +120% in 90 days.</p>
+      </div>
+      <div class="q">
+        <div class="tiny mono">Case</div>
+        <strong>Dev Tool → Adoption</strong>
+        <p>ICP split by job‑to‑be‑done; docs + samples overhaul; activation +38%, weekly active doubled.</p>
+      </div>
+      <div class="q">
+        <div class="tiny mono">Case</div>
+        <strong>AI API → PR without PR</strong>
+        <p>Memetic launch artifact seeded through community; 1,000+ earned signups, $0 paid.</p>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h3>Questions, asked bluntly</h3>
+      <details>
+        <summary>Is this just marketing theater with an AI hat?</summary>
+        <p>No. The AI is mostly for jokes. The work is research, positioning, and loops you can maintain without us.</p>
+      </details>
+      <details>
+        <summary>Paid ads?</summary>
+        <p>Only to accelerate a loop that already works. Never as life support.</p>
+      </details>
+      <details>
+        <summary>Work samples?</summary>
+        <p>Happy to walk through anonymized systems live. We don’t publish client logos.</p>
+      </details>
+    </section>
+
+    <section id="contact" class="split" style="margin-top:56px">
+      <div>
+        <h3>Run the Fit Test</h3>
+        <p class="tiny">If you’re building something real and want compounding growth without the circus, say hello.</p>
+        <form id="form" class="card" onsubmit="event.preventDefault(); fakeSubmit()">
+          <label class="tiny" for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@company.com" style="width:100%;margin:6px 0 12px;padding:12px;border-radius:12px;border:1px solid #262c3e;background:#0e1220;color:#e8ecf4">
+          <label class="tiny" for="details">What are you building?</label>
+          <textarea id="details" name="details" rows="4" required placeholder="Two lines on product, stage, biggest constraint" style="width:100%;margin:6px 0 12px;padding:12px;border-radius:12px;border:1px solid #262c3e;background:#0e1220;color:#e8ecf4"></textarea>
+          <button class="btn primary" style="width:100%">Send the Bat‑Signal</button>
+          <div id="thanks" class="tiny" style="display:none;margin-top:10px;color:#7ef29a">Got it. We’ll reply if it’s a fit.</div>
+        </form>
+      </div>
+      <div class="card">
+        <h4 class="mono" style="margin:0 0 6px">NDA‑Friendly</h4>
+        <p class="tiny">We keep quiet. No logos, no leaks. If we work together, it’s because the work speaks.</p>
+        <h4 class="mono" style="margin:10px 0 6px">Response Times</h4>
+        <p class="tiny">We’re fast on work, slow on hype. That’s the point.</p>
+        <h4 class="mono" style="margin:10px 0 6px">Location</h4>
+        <p class="tiny">Remote‑first. PST‑friendly. Occasionally in a dark room training memes.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Satere. All wrongs reversed.</div>
+      <div class="mono">Press <kbd>~</kbd> for the secret console.</div>
+    </footer>
   </div>
 
   <script>
-    const chart = document.getElementById('chartWrap');
-    const artifact = document.getElementById('artifact');
-    const panel = document.getElementById('panel');
-    const dot = document.getElementById('dot');
-    const send = document.getElementById('send');
-    const introText = document.getElementById('introText');
-
-    function pulseArtifact(){
-      const now = new Date();
-      const stamp = now.toISOString().replace('T',' ').slice(0,19);
-      const ratio = (Math.random()*9 + 1).toFixed(1) + '×';
-      artifact.textContent = stamp + '  •  ' + ratio;
-      artifact.classList.add('show');
-      setTimeout(()=>artifact.classList.remove('show'), 2300);
+    const yr=document.getElementById('year'); yr.textContent=new Date().getFullYear();
+    function fakeSubmit(){
+      const t=document.getElementById('thanks'); t.style.display='block';
+      console.log('%cSatere','background:linear-gradient(90deg,#7c88ff,#00ffd1);color:#0a0b0f;padding:6px 10px;border-radius:8px', 'If you found this, you probably know what you\'re doing.');
     }
-
-    let chartShown = false;
-    function revealChart(){
-      if(!chartShown){
-        chartShown = true; chart.classList.add('show'); pulseArtifact();
-      } else { pulseArtifact(); }
-    }
-
-    function openPanel(){ panel.classList.add('show'); setTimeout(()=>introText.focus(), 60); }
-    function closePanel(){ panel.classList.remove('show'); }
-
-    send.addEventListener('click', ()=>{
-      const v = introText.value.trim();
-      if(!v){ closePanel(); return; }
-      introText.value = ' ';
-      closePanel();
-      artifact.textContent = 'received';
-      artifact.classList.add('show');
-      setTimeout(()=>artifact.classList.remove('show'), 1600);
+    // playful console toggle
+    let open=false;
+    const consoleEl=document.getElementById('console');
+    window.addEventListener('keydown',e=>{
+      if(e.key==='`' || e.key==='~'){
+        open=!open;
+        consoleEl.textContent = open
+          ? '$ satere reveal --secrets\n→ secret: growth = research × focus × shipping\n→ secret: memes are just compressed strategy\n→ secret: buy-in beats buy-ads\nOK.'
+          : '$ satere run growth --mode="ridiculous-ai"\n▶ ingesting market graph...\n▶ detecting memetic vectors...\n▶ compiling GTM bytecode...\n✅ loop-1: partner\n✅ loop-2: community\n✅ loop-3: content\n→ status: graphs escalating (tasteful)';
+      }
     });
-
-    window.addEventListener('scroll', revealChart, { once:false, passive:true });
-    window.addEventListener('keydown', (e)=>{
-      if((e.key === 'Enter' && e.shiftKey) || (e.key === ' ') ) { revealChart(); }
-      if(e.key === 'Enter' && e.shiftKey){ openPanel(); }
-      if(e.key === 'Escape'){ closePanel(); }
-    });
-    dot.addEventListener('click', openPanel);
-
-    panel.addEventListener('click', (e)=>{ if(e.target === panel) closePanel(); });
-
-    setTimeout(pulseArtifact, 1200);
   </script>
 </body>
 </html>
-
